@@ -1,59 +1,218 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Zaylora — Premium Cardamom Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A product showcase website for **Zaylora**, a premium cardamom brand. Built with Laravel 12, Livewire v4, and Tailwind CSS v4.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tech Stack
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Layer | Technology |
+|---|---|
+| Framework | Laravel 12 (PHP 8.2+) |
+| Reactivity | Livewire v4 |
+| Styling | Tailwind CSS v4 + Vite |
+| Database | MySQL (or SQLite for local dev) |
+| Auth | Laravel built-in (`Auth::attempt`) |
+| File storage | Laravel Storage (local `public` disk) |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Frontend
+- **Homepage** (`/`) — hero section with dynamic banner, product grid
+- **About Us** (`/about`) — brand story, Why Choose Us, Spice Processing steps, product grid
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Admin Panel (`/admin`)
+- Protected by Laravel auth (login required)
+- **Products** — create, edit, delete products with image upload
+- **Site Settings** — upload / replace / remove site logo and banner image
 
-## Laravel Sponsors
+### Dynamic theming
+- Logo uploaded in admin replaces the text logo in the navbar and footer
+- Banner uploaded in admin replaces the hero image on the homepage and About Us page
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Project Structure
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```
+app/
+├── Http/Controllers/
+│   └── AdminAuthController.php      # Handles admin logout
+├── Livewire/
+│   ├── Products.php                 # Homepage product grid
+│   └── Admin/
+│       ├── Login.php                # Admin login form
+│       ├── ProductList.php          # Product table with delete
+│       ├── ProductForm.php          # Create / edit product + image upload
+│       └── SiteSettings.php        # Logo & banner upload
+├── Models/
+│   ├── Product.php
+│   ├── SiteSetting.php              # Singleton settings model
+│   └── User.php
+└── Providers/
+    └── AppServiceProvider.php       # Injects $settings into all views via View Composer
 
-## Contributing
+resources/views/
+├── layouts/
+│   └── app.blade.php                # Shared frontend layout (navbar + footer)
+├── welcome.blade.php                # Homepage
+├── about.blade.php                  # About Us page
+├── admin/
+│   ├── layout.blade.php             # Admin panel layout (sidebar)
+│   ├── login.blade.php
+│   ├── products.blade.php
+│   ├── product-form.blade.php
+│   └── site-settings.blade.php
+└── livewire/
+    ├── products.blade.php
+    └── admin/
+        ├── login.blade.php
+        ├── product-list.blade.php
+        ├── product-form.blade.php
+        └── site-settings.blade.php
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Local Setup
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 1. Clone and install dependencies
 
-## Security Vulnerabilities
+```bash
+git clone <repo-url> zaylora
+cd zaylora
+composer install
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 2. Environment
 
-## License
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Edit `.env` and set your database credentials:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=zaylora
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 3. Database
+
+```bash
+php artisan migrate
+```
+
+### 4. Create admin user
+
+```bash
+php artisan tinker
+```
+```php
+\App\Models\User::create([
+    'name'     => 'Admin',
+    'email'    => 'admin@zaylora.com',
+    'password' => bcrypt('your-password'),
+]);
+```
+
+### 5. Storage symlink
+
+```bash
+php artisan storage:link
+```
+
+### 6. Build assets and run
+
+```bash
+npm run dev
+php artisan serve
+```
+
+Or use the built-in concurrent dev runner (serves, queue, logs, and vite together):
+
+```bash
+composer run dev
+```
+
+Visit `http://localhost:8000`
+
+---
+
+## Admin Panel
+
+| URL | Description |
+|---|---|
+| `/admin/login` | Login page |
+| `/admin/products` | Product list |
+| `/admin/products/create` | Add new product |
+| `/admin/products/{id}/edit` | Edit product |
+| `/admin/settings` | Upload logo & banner |
+
+---
+
+## Database Schema
+
+### `products`
+| Column | Type | Notes |
+|---|---|---|
+| `id` | bigint | Primary key |
+| `name` | string | Required |
+| `image` | string | Nullable, path in `storage/products/` |
+| `phone` | string | Nullable, used for Call button |
+| `whatsapp` | string | Nullable, used for WhatsApp button |
+
+### `site_settings`
+| Column | Type | Notes |
+|---|---|---|
+| `id` | bigint | Always one row |
+| `logo` | string | Nullable, path in `storage/settings/` |
+| `banner` | string | Nullable, path in `storage/settings/` |
+
+---
+
+## Deployment
+
+```bash
+# On the production server
+composer install --no-dev --optimize-autoloader
+npm install && npm run build
+cp .env.example .env        # then fill in real values
+php artisan key:generate
+php artisan migrate --force
+php artisan storage:link
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+**Required `.env` changes for production:**
+
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://yourdomain.com
+```
+
+**Storage permissions:**
+
+```bash
+chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+```
+
+---
+
+## Notes
+
+- **Filament not used** — Filament v3 requires Livewire `^3.5` which conflicts with this project's Livewire v4. The admin panel is built with custom Livewire v4 components instead.
+- **`SiteSetting` singleton** — `SiteSetting::instance()` uses `firstOrCreate([])` so there is always exactly one row. No configuration needed after migration.
+- **Global `$settings`** — Injected into every view automatically via a View Composer in `AppServiceProvider`, so it is available in all layouts, pages, and Livewire views without manual passing.
