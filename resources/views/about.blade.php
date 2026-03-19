@@ -16,7 +16,7 @@
         <div class="absolute inset-0 bg-black/65"></div>
         {{-- Text --}}
         <div class="relative z-10 text-center max-w-3xl mx-auto px-6 py-20">
-            <p class="text-green-400 text-xs uppercase tracking-[0.3em] mb-5">About Us</p>
+            <p class="text-green-400 text-xs uppercase tracking-[0.3em] mb-5"> </p>
             <p class="text-white text-lg md:text-xl leading-relaxed" style="font-family: 'Playfair Display', serif;">
                 Rooted in a heritage that has defined culinary excellence for centuries, Zaylora brings you the purest cardamom pods to elevate every dish with a timeless, regal aroma.
             </p>

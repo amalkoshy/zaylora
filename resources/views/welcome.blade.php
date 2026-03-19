@@ -68,6 +68,41 @@
         @endif
     </section>
 
+    {{-- ─── WHOLESALE SECTION ──────────────────────────────────── --}}
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-14 items-start">
+
+                {{-- Left: heading --}}
+                <div class="md:w-2/5">
+                    <p class="text-green-700 text-xs uppercase tracking-widest mb-3">Bulk Supply</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 leading-snug" style="font-family: 'Playfair Display', serif;">
+                        Wholesale Cardamom Available
+                    </h2>
+                    <div class="w-14 h-0.5 bg-[#3a7d44] mt-5"></div>
+                </div>
+
+                {{-- Right: description --}}
+                <div class="md:w-3/5 space-y-4 pt-1">
+                    <p class="text-gray-600 text-base leading-relaxed">
+                        We supply premium green cardamom in bulk quantities for wholesalers, retailers, exporters, and traders. Our cardamom is freshly dried, carefully graded, and available in different quality standards to meet your specific requirements.
+                    </p>
+                    <p class="text-gray-600 text-base leading-relaxed">
+                        All orders are carefully packed and dispatched from our facility in Rajakkad, Kerala. Our prices are competitive and negotiable based on quantity and quality grade. Contact us to enquire about bulk pricing and availability.
+                    </p>
+                    <a href="#contact"
+                       class="inline-flex items-center gap-2 bg-[#1e5c2e] hover:bg-[#174a25] text-white text-sm font-medium px-6 py-3 rounded-lg transition-colors mt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        Enquire Now
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     {{-- ─── PRODUCTS SECTION ───────────────────────────────────── --}}
     <section id="products" class="py-20 bg-[#f7f3ec] scroll-mt-16">
         <div class="max-w-7xl mx-auto px-6">
