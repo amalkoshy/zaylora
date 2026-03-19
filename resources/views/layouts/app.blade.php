@@ -15,7 +15,7 @@
 <body class="antialiased" style="font-family: 'Inter', sans-serif;">
 
     {{-- ─── NAVBAR ──────────────────────────────────────────────── --}}
-    <nav class="bg-black sticky top-0 z-50">
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-colors duration-300" id="main-nav">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="/">
                 @if($settings->logo)
@@ -33,7 +33,7 @@
                    class="text-gray-300 text-sm hover:text-green-400 transition-colors">Products</a>
                 <a href="#gallery"
                    class="text-gray-300 text-sm hover:text-green-400 transition-colors">Gallery</a>
-                <a href="{{ url('/#contact') }}"
+                <a href="#contact"
                    class="text-gray-300 text-sm hover:text-green-400 transition-colors">Contact Us</a>
             </div>
             <button class="md:hidden text-white" id="nav-toggle">
@@ -47,7 +47,7 @@
             <a href="{{ route('about') }}" class="block text-gray-300 py-2 text-sm">About Us</a>
             <a href="{{ url('/#products') }}" class="block text-gray-300 py-2 text-sm">Products</a>
             <a href="#gallery" class="block text-gray-300 py-2 text-sm">Gallery</a>
-            <a href="{{ url('/#contact') }}" class="block text-gray-300 py-2 text-sm">Contact Us</a>
+            <a href="#contact" class="block text-gray-300 py-2 text-sm">Contact Us</a>
         </div>
     </nav>
 
@@ -66,14 +66,14 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                             </svg>
-                            <span>+91 XXXXXXXXXX</span>
+                            <span>+91 9074862344</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                             </svg>
-                            <span>Your Address Here,<br>City, State, PIN</span>
+                            <span>Zaylora spices,<br>Kuruvilla City, Rajakumari, Kerala 685619</span>
                         </li>
                     </ul>
                 </div>
@@ -89,8 +89,8 @@
 
                 <div class="md:text-right">
                     <h4 class="text-xs uppercase tracking-widest text-gray-400 mb-4">Enquiries</h4>
-                    <a href="mailto:info@zaylora.com" class="text-sm text-gray-300 hover:text-green-400 transition-colors">
-                        info@zaylora.com
+                    <a href="mailto:zayloraspices@gmail.com" class="text-sm text-gray-300 hover:text-green-400 transition-colors">
+                       zayloraspices@gmail.com
                     </a>
                     <h4 class="text-xs uppercase tracking-widest text-gray-400 mt-6 mb-3">Follow Us</h4>
                     <div class="flex gap-4 md:justify-end">
@@ -120,11 +120,27 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
         document.getElementById('nav-toggle')?.addEventListener('click', () => {
             document.getElementById('mobile-menu')?.classList.toggle('hidden');
         });
+
+        // Scroll-aware navbar: transparent at top, solid black when scrolled
+        (function () {
+            const nav = document.getElementById('main-nav');
+            function update() {
+                if (window.scrollY > 10) {
+                    nav.classList.add('bg-black');
+                } else {
+                    nav.classList.remove('bg-black');
+                }
+            }
+            window.addEventListener('scroll', update, { passive: true });
+            update();
+        })();
     </script>
 
+    @stack('scripts')
     @livewireScripts
 </body>
 </html>
