@@ -37,8 +37,11 @@
                    class="text-gray-300 text-sm hover:text-green-400 transition-colors">Contact Us</a>
             </div>
             <button class="md:hidden text-white" id="nav-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>
         </div>
@@ -122,7 +125,13 @@
     <script>
         // Mobile menu toggle
         document.getElementById('nav-toggle')?.addEventListener('click', () => {
-            document.getElementById('mobile-menu')?.classList.toggle('hidden');
+            const menu = document.getElementById('mobile-menu');
+            const iconOpen  = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+            const isHidden = menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden', isHidden);
+            iconClose.classList.toggle('hidden', !isHidden);
         });
 
         // Scroll-aware navbar: transparent at top, solid black when scrolled
