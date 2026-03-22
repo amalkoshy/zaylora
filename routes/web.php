@@ -26,4 +26,5 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/settings', fn () => view('admin.site-settings'))->name('settings');
     Route::get('/about-settings', fn () => view('admin.about-settings'))->name('about-settings');
     Route::get('/slider-settings', fn () => view('admin.slider-settings'))->name('slider-settings');
+    Route::get('/homepage-content', fn () => view('admin.homepage-content'))->name('homepage-content');
 });

@@ -51,10 +51,10 @@
                     </h2>
                     <div class="w-14 h-0.5 bg-[#3a7d44] mb-6"></div>
                     <p class="text-gray-600 text-base leading-relaxed mb-4">
-                        Zaylora Spices is a new, passionate initiative born from the lush Idukki hill ranges of Rajakkad, Kerala — a region celebrated for producing the world's finest cardamom.
+                        Zaylora Spices is a new, passionate initiative born from the lush Idukki hill ranges of Rajakkad, Kerala a region celebrated for producing the world's finest cardamom.
                     </p>
                     <p class="text-gray-600 text-base leading-relaxed">
-                        We are committed to bringing fresh, safe, and high-grade cardamom directly from trusted farmers to customers. While we are just beginning our journey, our roots run deep — shaped by generations of spice-growing heritage and a heartfelt dedication to quality.
+                        We are committed to bringing fresh, safe, and high-grade cardamom directly from trusted farmers to customers. While we are just beginning our journey, our roots run deepshaped by generations of spice-growing heritage and a heartfelt dedication to quality.
                     </p>
                 </div>
 
