@@ -21,7 +21,7 @@
                 @if($settings->logo)
                     <img src="{{ asset('storage/' . $settings->logo) }}" alt="Zaylora" class="h-10 w-auto object-contain">
                 @else
-                    <span class="text-white text-2xl font-bold tracking-[0.2em]" style="font-family: 'Playfair Display', serif;">ZAYLORA</span>
+                    <span class="text-white text-xl font-bold tracking-[0.2em]" style="font-family: 'Playfair Display', serif;">ZAYLORA SPICES</span>
                 @endif
             </a>
             <div class="hidden md:flex items-center gap-8">
@@ -29,12 +29,12 @@
                    class="text-sm font-medium transition-colors {{ request()->is('/') ? 'text-green-400' : 'text-gray-300 hover:text-green-400' }}">Home</a>
                 <a href="{{ route('about') }}"
                    class="text-sm transition-colors {{ request()->routeIs('about') ? 'text-green-400' : 'text-gray-300 hover:text-green-400' }}">About Us</a>
-                <a href="{{ url('/#products') }}"
-                   class="text-gray-300 text-sm hover:text-green-400 transition-colors">Products</a>
-                <a href="#gallery"
-                   class="text-gray-300 text-sm hover:text-green-400 transition-colors">Gallery</a>
-                <a href="#contact"
-                   class="text-gray-300 text-sm hover:text-green-400 transition-colors">Contact Us</a>
+                <a href="{{ route('products') }}"
+                   class="text-sm transition-colors {{ request()->routeIs('products') ? 'text-green-400' : 'text-gray-300 hover:text-green-400' }}">Products</a>
+                <a href="{{ route('gallery') }}"
+                   class="text-sm transition-colors {{ request()->routeIs('gallery') ? 'text-green-400' : 'text-gray-300 hover:text-green-400' }}">Gallery</a>
+                <a href="{{ route('contact') }}"
+                   class="text-sm transition-colors {{ request()->routeIs('contact') ? 'text-green-400' : 'text-gray-300 hover:text-green-400' }}">Contact Us</a>
             </div>
             <button class="md:hidden text-white" id="nav-toggle">
                 <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -48,9 +48,9 @@
         <div class="md:hidden hidden bg-black px-6 pb-4" id="mobile-menu">
             <a href="{{ url('/') }}" class="block text-white py-2 text-sm">Home</a>
             <a href="{{ route('about') }}" class="block text-gray-300 py-2 text-sm">About Us</a>
-            <a href="{{ url('/#products') }}" class="block text-gray-300 py-2 text-sm">Products</a>
-            <a href="#gallery" class="block text-gray-300 py-2 text-sm">Gallery</a>
-            <a href="#contact" class="block text-gray-300 py-2 text-sm">Contact Us</a>
+            <a href="{{ route('products') }}" class="block text-gray-300 py-2 text-sm">Products</a>
+            <a href="{{ route('gallery') }}" class="block text-gray-300 py-2 text-sm">Gallery</a>
+            <a href="{{ route('contact') }}" class="block text-gray-300 py-2 text-sm">Contact Us</a>
         </div>
     </nav>
 
