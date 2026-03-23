@@ -22,7 +22,7 @@
         <div class="mt-5 w-16 h-0.5 bg-[#3a7d44] mx-auto"></div>
     </div>
 
-    {{-- ── MASONRY GRID ── --}}
+    {{-- ── PHOTO GRID ── --}}
     <section class="bg-[#f7f3ec] py-14 px-4 sm:px-6 lg:px-10">
         @if($photos->isEmpty())
             <div class="text-center py-24">
@@ -32,40 +32,28 @@
                 <p class="text-gray-400 text-sm">No photos yet. Check back soon.</p>
             </div>
         @else
-            <div class="max-w-7xl mx-auto" style="columns: 2; column-gap: 0.75rem;">
-                {{-- md: 3 cols, lg: 4 cols via inline style override with responsive wrapper --}}
-                <style>
-                    @media (min-width: 640px)  { .gallery-masonry { columns: 3 !important; } }
-                    @media (min-width: 1024px) { .gallery-masonry { columns: 4 !important; } }
-                </style>
-                <div class="gallery-masonry" style="columns: 2; column-gap: 0.75rem;">
-                    @foreach($photos as $index => $photo)
-                        <div
-                            class="break-inside-avoid mb-3 cursor-pointer group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300"
-                            @click="openPhoto({{ $index }})"
+            <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                @foreach($photos as $index => $photo)
+                    <div
+                        class="cursor-pointer group relative overflow-hidden rounded-xl aspect-square shadow-sm"
+                        @click="openPhoto({{ $index }})"
+                    >
+                        <img
+                            src="{{ asset('storage/' . $photo->image) }}"
+                            alt="{{ $photo->caption ?? 'Gallery photo' }}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy"
                         >
-                            <img
-                                src="{{ asset('storage/' . $photo->image) }}"
-                                alt="{{ $photo->caption ?? 'Gallery photo' }}"
-                                class="w-full object-cover block group-hover:scale-105 transition-transform duration-500"
-                                loading="lazy"
-                            >
-                            {{-- Hover overlay --}}
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                @if($photo->caption)
-                                    <p class="text-white text-sm font-medium leading-snug translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                        {{ $photo->caption }}
-                                    </p>
-                                @endif
-                                <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-1.5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
-                                    </svg>
-                                </div>
+                        {{-- Hover overlay with centered zoom icon --}}
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                                </svg>
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
         @endif
     </section>
