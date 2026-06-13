@@ -88,8 +88,8 @@
                         <div>
                             <p class="text-xs text-gray-400 uppercase tracking-wider mb-0.5">Address</p>
                             <p class="text-gray-800 font-medium text-sm leading-snug">
-                                Zaylora Spices, Kuruvilla City,<br>
-                                Rajakumari, Kerala 685619
+                                Zaylora Spices, Mammattikanam P.O, road, Pazhayaviduthi, Rajakkad,<br>
+                                Kuthumkal, Kerala 685566
                             </p>
                         </div>
                     </div>
