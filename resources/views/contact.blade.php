@@ -87,10 +87,10 @@
                         </div>
                         <div>
                             <p class="text-xs text-gray-400 uppercase tracking-wider mb-0.5">Address</p>
-                            <p class="text-gray-800 font-medium text-sm leading-snug">
+                            <a href="https://maps.app.goo.gl/55b4wrDFGa32Yxuo8" target="_blank" rel="noopener noreferrer" class="text-gray-800 font-medium text-sm leading-snug hover:text-green-700">
                                 Zaylora Spices, Mammattikanam P.O, road, Pazhayaviduthi, Rajakkad,<br>
                                 Kuthumkal, Kerala 685566
-                            </p>
+                            </a>
                         </div>
                     </div>
                 </div>
